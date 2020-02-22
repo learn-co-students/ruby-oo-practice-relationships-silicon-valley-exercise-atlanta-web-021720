@@ -53,6 +53,26 @@ class Startup
         end
 
     end
+
+    def sign_contract
+    
+    end
+
+    def num_funding_rounds
+    
+    end
+
+    def total_funds
+    
+    end
+
+    def investors
+    
+    end
+
+    def big_investors
+    
+    end
 end
 
 
