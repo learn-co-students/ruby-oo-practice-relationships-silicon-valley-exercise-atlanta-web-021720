@@ -51,9 +51,9 @@ class VentureCapitalist
     end
 end
 
-v = VentureCapitalist.new("Chan", 10000000)
-v2 = VentureCapitalist.new("Joon", 10000000000)
-VentureCapitalist.all
-VentureCapitalist.tres_commas_club
-binding pry
+# v = VentureCapitalist.new("Chan", 10000000)
+# v2 = VentureCapitalist.new("Joon", 10000000000)
+# VentureCapitalist.all
+# VentureCapitalist.tres_commas_club
+# binding pry
 
