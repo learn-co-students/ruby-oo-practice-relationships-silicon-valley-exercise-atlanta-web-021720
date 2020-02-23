@@ -30,8 +30,8 @@ class VentureCapitalist
         end
     end
 
-    def offer_contract
-    
+    def offer_contract(start_up, investment)       
+        FundingRoound.new(start_up, self, name , investment)
     end
 
     def funding_rounds
@@ -46,7 +46,7 @@ class VentureCapitalist
     
     end
 
-    def invested
+    def invested (domain)
     
     end
 end

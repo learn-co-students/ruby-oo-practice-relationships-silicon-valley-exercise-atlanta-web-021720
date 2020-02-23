@@ -49,10 +49,9 @@ class Startup
         end
     end
     
-    # @arg capitalist : venture_capitalist, @arg type : type_of_investment, @arg invested : amount_of_invested
-    def sign_contract(capitalist, type, invested)       
-        capitalist.total_worth = invested.to_f
-        FundingRound.new(self,capitalist, type)
+    # @arg capitalist : venture_capitalist, @arg type : type_of_investment, @arg investment : amount_of_invested
+    def sign_contract(capitalist, type, investment)       
+        FundingRound.new(self,capitalist, type, investment)
     end
 
     def funding_rounds
@@ -80,7 +79,7 @@ class Startup
 
     def funds
         funding_rounds.map do |round|
-            round.venture_capitalist.total_worth 
+            round.investment 
         end  
     end
 
@@ -126,11 +125,11 @@ end
 # s3 = Startup.new("domain_test_3","domain_name_3")
 # v3 = VentureCapitalist.new("Jay", 20000000000)
 
-# f = FundingRound.new(s,v,"Angel")
-# f1 = FundingRound.new(s,v1,"Pre-Seed")
-# f2 = FundingRound.new(s2,v2,"Seed")
-# f3 = FundingRound.new(s3,v2,"Series A")
-# f5 = FundingRound.new(s,v2,"Series B")
-# f7 = FundingRound.new(s,v2,"Series B")
+# f = FundingRound.new(s,v,"Angel", 1000)
+# f1 = FundingRound.new(s,v1,"Pre-Seed", 20000)
+# f2 = FundingRound.new(s2,v2,"Seed",30000)
+# f3 = FundingRound.new(s3,v2,"Series A",50000)
+# f5 = FundingRound.new(s,v2,"Series B",70000)
+# f7 = FundingRound.new(s,v2,"Series B",9000)
 
 

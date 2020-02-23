@@ -1,13 +1,14 @@
 require 'pry'
 class FundingRound
     attr_reader :startup, :venture_capitalist
-    attr_accessor :type
+    attr_accessor :type, :investment
 
     @@all = []
-    def initialize(startup, venture_capitalist, type)
+    def initialize(startup, venture_capitalist, type, investment)
         @startup = startup
         @venture_capitalist = venture_capitalist
         @type = type
+        @investment = investment.to_f
         @@all<< self
     end
 
@@ -30,9 +31,12 @@ class FundingRound
     def investment
         # a.inject{ |sum,x| sum + x }
         # a.inject(:+)
-        (@@all.map do |funding_round| 
-            funding_round.venture_capitalist.total_worth
-        end).inject(0,:+).to_f         
+
+        # (@@all.map do |funding_round| 
+        #     funding_round.venture_capitalist.total_worth
+        # end).inject(0,:+).to_f         
+
+        @investment.to_f
     end 
 end
 
@@ -58,4 +62,5 @@ end
 # f.startup
 # f.type # "Angel", "Pre-Seed", "Seed", "Series A", "Series B", "Series C"
 # f.investment
-# binding.pry
+#binding.pry
+
