@@ -98,22 +98,38 @@ class Startup
     end
 
     def big_investors
-        # investors
-        # VentureCapitalist.tres_commas_club
+        # (investors.map do |inventor|
+        #     if VentureCapitalist.tres_commas_club.include? inventor 
+        #         inventor
+        #     end    
+        # end).uniq   
+
+        (investors.select do |inventor|
+            if VentureCapitalist.tres_commas_club.include? inventor 
+                inventor
+            end    
+        end).uniq
     end
 end
 
 
-#startup = Startup.new("domain_test","domain_name")
-#startup.pivot("domain_test","domain_name")
-#startup.pivot("domain_test_3","domain_name_3")
-#startup.pivot("domain_test_4","domain_name_4")
+# s = Startup.new("domain_test","domain_name")
+# v = VentureCapitalist.new("Chan", 10000000)
 
-#startup_1 = Startup.new("domain_test_1","domain_name_1")
+# s1 = Startup.new("domain_test_1","domain_name_1")
+# v1 = VentureCapitalist.new("Joon", 10000000000)
 
-#startup.
-#startup_1.pivot("domain_test_1","domain_name_1")
-#puts Startup.domains
+# s2 = Startup.new("domain_test_2","domain_name_2")
+# v2 = VentureCapitalist.new("Jay", 20000000000)
 
+# s3 = Startup.new("domain_test_3","domain_name_3")
+# v3 = VentureCapitalist.new("Jay", 20000000000)
+
+# f = FundingRound.new(s,v,"Angel")
+# f1 = FundingRound.new(s,v1,"Pre-Seed")
+# f2 = FundingRound.new(s2,v2,"Seed")
+# f3 = FundingRound.new(s3,v2,"Series A")
+# f5 = FundingRound.new(s,v2,"Series B")
+# f7 = FundingRound.new(s,v2,"Series B")
 
 
