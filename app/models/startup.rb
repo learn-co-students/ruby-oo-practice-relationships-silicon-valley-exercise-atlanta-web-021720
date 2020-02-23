@@ -103,7 +103,8 @@ class Startup
         #         inventor
         #     end    
         # end).uniq   
-
+        
+        #changed using map to select method to remove nil from return value
         (investors.select do |inventor|
             if VentureCapitalist.tres_commas_club.include? inventor 
                 inventor
