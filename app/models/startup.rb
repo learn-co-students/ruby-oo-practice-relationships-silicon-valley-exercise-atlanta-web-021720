@@ -61,7 +61,6 @@ class Startup
         FundingRound.all.select do |round|
             round.startup == self
         end
-
     end
 
     def num_funding_rounds
@@ -91,8 +90,8 @@ class Startup
     end
 
     def investors
-        (funding_rounds.map do |round|
-            round.venture_capitalist
+        (funding_rounds.map do |round| 
+            round.venture_capitalist 
         end).uniq
     end
 
@@ -104,11 +103,14 @@ class Startup
         # end).uniq   
         
         #changed using map to select method to remove nil from return value
-        (investors.select do |inventor|
-            if VentureCapitalist.tres_commas_club.include? inventor 
-                inventor
-            end    
-        end).uniq
+        # investors.select do |inventor|
+        #     if VentureCapitalist.tres_commas_club.include? inventor 
+        #         inventor
+        #     end  
+        # end
+        investors.select do |inventor| 
+            VentureCapitalist.tres_commas_club.include? inventor ? inventor : nil 
+        end
     end
 end
 
