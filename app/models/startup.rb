@@ -5,7 +5,6 @@ class Startup
     @@all = []
 
     def initialize(domain,name)
-        # pivot(domain, name)
         @domain = domain
         @name = name
         @@all << self
@@ -16,7 +15,7 @@ class Startup
         @name = name
     end   
 
-    def domain      
+    def domain
         @domain
     end
     
@@ -27,13 +26,13 @@ class Startup
     def self.find_by_founder(name)
         @@all.find do | startup |
             startup.name == name   
-        end  
+        end
     end    
 
     # def find_by_founder(name)
     #     @@all.find do | startup |
     #         startup.name == name   
-    #     end  
+    #     end
     # end
     
     # def self.domains
@@ -41,37 +40,66 @@ class Startup
     #     @@all.each do | startup |
     #         ret_domains << startup.domain   
     #     end
-    #     ret_domains  
+    #     ret_domains 
     # end
 
-    def self.domains
-        
+    def self.domains    
         @@all.map do |starup|
             starup.domain
-            # @@all[index]  
-            #binding.pry
+        end
+    end
+    
+    # @arg capitalist : venture_capitalist, @arg type : type_of_investment, @arg invested : amount_of_invested
+    def sign_contract(capitalist, type, invested)       
+        capitalist.total_worth = invested.to_f
+        FundingRound.new(self,capitalist, type)
+    end
+
+    def funding_rounds
+        # FundingRound.all.select do |round|
+        #     round.startup == self
+        # end
+        FundingRound.all.select do |round|
+            round.startup == self
         end
 
     end
 
-    def sign_contract
-    
+    def num_funding_rounds
+        # rounds = FundingRound.all.select do |round|
+        #     round.startup == self
+        # end
+        # rounds.length
+
+        # (FundingRound.all.select do |round|
+        #     round.startup == self
+        # end).length
+
+        funding_rounds.length
     end
 
-    def num_funding_rounds
-    
+    def funds
+        funding_rounds.map do |round|
+            round.venture_capitalist.total_worth 
+        end  
     end
 
     def total_funds
-    
+        # (funding_rounds.map do |round|
+        #     round.venture_capitalist.total_worth
+        # end).inject(0,:+).to_f
+        funds.inject(0,:+).to_f    
     end
 
     def investors
-    
+        (funding_rounds.map do |round|
+            round.venture_capitalist
+        end).uniq
     end
 
     def big_investors
-    
+        # investors
+        # VentureCapitalist.tres_commas_club
     end
 end
 

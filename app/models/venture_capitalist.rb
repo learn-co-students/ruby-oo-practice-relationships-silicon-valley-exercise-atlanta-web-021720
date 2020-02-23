@@ -8,7 +8,7 @@ class VentureCapitalist
     @@all = []
     def initialize(name, total_worth)
         @name = name
-        @total_worth = total_worth
+        @total_worth = total_worth.to_f
         @@all<< self
     end
 
@@ -25,8 +25,8 @@ class VentureCapitalist
     end
     
     def self.tres_commas_club
-        @@all.find do | venture_capitalist|
-            venture_capitalist.total_worth >  1000000000
+        @@all.select do | venture_capitalist|
+            venture_capitalist.total_worth >  1000000000.to_f
         end
     end
 
@@ -53,6 +53,7 @@ end
 
 # v = VentureCapitalist.new("Chan", 10000000)
 # v2 = VentureCapitalist.new("Joon", 10000000000)
+# v3 = VentureCapitalist.new("Jay", 2000000000)
 # VentureCapitalist.all
 # VentureCapitalist.tres_commas_club
 # binding pry
